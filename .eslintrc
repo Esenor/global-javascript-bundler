@@ -1,0 +1,15 @@
+{
+  "plugins": [
+    "html",
+    "import",
+    "node",
+    "promise",
+    "standard"
+  ],
+  "extends": [
+    "standard"
+  ],
+  "rules": {
+    "arrow-parens": 0
+  }
+}
