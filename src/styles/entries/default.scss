@@ -1,0 +1,14 @@
+@import '../variables.scss';
+html {
+    body {
+        h1 {
+            color: $primary-color;
+        }
+    }
+}
+
+a {
+    &:hover {
+        color: $secondary-color;
+    }
+}

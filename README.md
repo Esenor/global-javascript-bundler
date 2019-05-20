@@ -8,5 +8,4 @@
 ## Roadmap
 
 - Unit tests
-- Scss/Sass support
 - Uglyfier

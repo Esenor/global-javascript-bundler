@@ -1,0 +1,57 @@
+@import '../variables.scss';
+$font-stack: Helvetica, sans-serif;
+
+body {
+    font: 100% $font-stack;
+    color: $primary-color;
+}
+
+nav {
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    li {
+        display: inline-block;
+    }
+
+    a {
+        display: block;
+        padding: 6px 12px;
+        text-decoration: none;
+    }
+}
+
+/* This CSS will print because %message-shared is extended. */
+%message-shared {
+    border: 1px solid #ccc;
+    padding: 10px;
+    color: $primary-color;
+}
+
+// This CSS won't print because %equal-heights is never extended.
+%equal-heights {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.message {
+    @extend %message-shared;
+}
+
+.success {
+    @extend %message-shared;
+    border-color: green;
+}
+
+.error {
+    @extend %message-shared;
+    border-color: $secondary-color;
+}
+
+.warning {
+    @extend %message-shared;
+    border-color: $primary-color;
+}
