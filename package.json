@@ -7,8 +7,9 @@
     "lint": "eslint --ext .js ./src --ext .js ./test/specs --ext .js ./etc",
     "pretest": "npm run lint",
     "test": "mocha --opts ./etc/test/mocha.opts",
+    "coverage": "nyc npm test",
     "watch": "webpack --config ./etc/webpack/development.config.js",
-    "prebuild": "npm run test",
+    "prebuild": "npm run coverage",
     "build": "webpack --config ./etc/webpack/production.config.js"
   },
   "author": "Esenor",
@@ -34,10 +35,11 @@
     "mocha": "^6.1.4",
     "mocha-junit-reporter": "^1.22.0",
     "node-sass": "^4.12.0",
+    "nyc": "^14.1.1",
     "postcss-loader": "^3.0.0",
     "remove-files-webpack-plugin": "^1.1.3",
     "sass-loader": "^7.1.0",
-    "webpack": "^4.31.0",
+    "webpack": "^4.32.0",
     "webpack-cli": "^3.3.2"
   }
 }

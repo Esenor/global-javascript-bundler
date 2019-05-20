@@ -10,4 +10,8 @@ export class Counter {
   getValue () {
     return this.value
   }
+
+  reset () {
+    this.value = 0
+  }
 }

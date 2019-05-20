@@ -1,0 +1,18 @@
+{
+  "all": true,
+  "cache": false,
+  "include": [
+    "src/js/**/*.js"
+  ],
+  "exclude": [
+    "**/*.spec.js"
+  ],
+  "lines": 10,
+  "functions": 10,
+  "statements": 10,
+  "reporter": [
+    "text",
+    "html"
+  ],
+  "check-coverage": true
+}
