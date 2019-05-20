@@ -5,8 +5,10 @@
   "main": "./etc/webpack/production.config.js",
   "scripts": {
     "lint": "eslint --ext .js ./src --ext .js ./test/specs --ext .js ./etc",
+    "pretest": "npm run lint",
+    "test": "mocha --opts ./etc/test/mocha.opts",
     "watch": "webpack --config ./etc/webpack/development.config.js",
-    "prebuild": "npm run lint",
+    "prebuild": "npm run test",
     "build": "webpack --config ./etc/webpack/production.config.js"
   },
   "author": "Esenor",
@@ -14,6 +16,7 @@
   "devDependencies": {
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
+    "@babel/register": "^7.4.4",
     "autoprefixer": "^9.5.1",
     "babel-loader": "^8.0.6",
     "babel-polyfill": "^6.26.0",
@@ -34,7 +37,6 @@
     "postcss-loader": "^3.0.0",
     "remove-files-webpack-plugin": "^1.1.3",
     "sass-loader": "^7.1.0",
-    "uglifyjs-webpack-plugin": "^2.1.3",
     "webpack": "^4.31.0",
     "webpack-cli": "^3.3.2"
   }

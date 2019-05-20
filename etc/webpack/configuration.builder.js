@@ -2,7 +2,7 @@ const path = require('path')
 const fs = require('fs')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const RemovePlugin = require('remove-files-webpack-plugin')
-const entriesFolder = path.join(__dirname, './../../src/entries')
+const entriesFolder = path.join(__dirname, './../../src/js/entries')
 const stylesFolder = path.join(__dirname, './../../src/styles/entries')
 const distributedFolder = path.join(__dirname, './../../dist')
 
@@ -22,26 +22,14 @@ module.exports = {
           filename: entryFileName
         },
         module: {
-          rules: [
-            {
-              test: /\.js$/,
-              exclude: /node_modules/,
-              use: [
-                'babel-loader',
-                'eslint-loader'
-              ]
-            },
-            {
-              test: /\.(sa|sc|c)ss$/,
-              exclude: /node_modules/,
-              use: [
-                MiniCssExtractPlugin.loader,
-                'css-loader',
-                'postcss-loader',
-                'sass-loader'
-              ]
-            }
-          ]
+          rules: [{
+            test: /\.js$/,
+            exclude: /node_modules/,
+            use: [
+              'babel-loader',
+              'eslint-loader'
+            ]
+          }]
         }
       })
       return webpackConfigurations
@@ -60,18 +48,22 @@ module.exports = {
           filename: '__css_side_effect.js'
         },
         module: {
-          rules: [
-            {
-              test: /\.scss$/,
-              exclude: /node_modules/,
-              use: [
-                MiniCssExtractPlugin.loader,
-                'css-loader',
-                'postcss-loader',
-                'sass-loader'
-              ]
-            }
-          ]
+          rules: [{
+            test: /\.scss$/,
+            exclude: /node_modules/,
+            use: [
+              MiniCssExtractPlugin.loader,
+              {
+                loader: 'css-loader'
+              },
+              {
+                loader: 'postcss-loader'
+              },
+              {
+                loader: 'sass-loader'
+              }
+            ]
+          }]
         },
         plugins: [
           new MiniCssExtractPlugin({
@@ -80,14 +72,12 @@ module.exports = {
           }),
           new RemovePlugin({
             after: {
-              test: [
-                {
-                  folder: path.join(distributedFolder, 'css'),
-                  method: (filePath) => {
-                    return new RegExp(/\.js$/, 'm').test(filePath)
-                  }
+              test: [{
+                folder: path.join(distributedFolder, 'css'),
+                method: (filePath) => {
+                  return new RegExp(/\.js$/, 'm').test(filePath)
                 }
-              ]
+              }]
             }
           })
         ]

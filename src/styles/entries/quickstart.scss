@@ -1,0 +1,19 @@
+@import '../variables.scss';
+@import '../button.scss';
+
+html {
+  body {
+    text-align: center;
+  }
+}
+
+p {
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: $primary-color;
+  
+  &:hover {
+    color: $secondary-color;
+  }
+}
